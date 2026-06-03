@@ -70,7 +70,7 @@ const HomePage = () => {
       </div>
 
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black" />
+      <div className="absolute inset-0 bg-linear-to-b from-black/20 via-black/40 to-black" />
 
       {/* Content */}
       <section className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center px-6 text-center">
@@ -81,7 +81,7 @@ const HomePage = () => {
 
         <h1 className="max-w-5xl text-5xl font-extrabold leading-tight md:text-7xl">
           The Hub For
-          <span className="bg-gradient-to-r from-violet-400 to-fuchsia-500 bg-clip-text text-transparent">
+          <span className="bg-linear-to-r from-violet-400 to-fuchsia-500 bg-clip-text text-transparent">
             {" "}Every Event
           </span>
           <br />
