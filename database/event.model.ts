@@ -158,7 +158,7 @@ function normalizeTime(time: string): string {
 }
 
 // slug generation and data normalization
-eventSchema.pre("save", function () {
+eventSchema.pre("validate", function () {
   const event = this as HydratedDocument<IEvent>;
   if (event.isModified("title") || event.isNew) {
     event.slug = generateSlug(event.title);
