@@ -173,7 +173,7 @@ eventSchema.pre("validate", function () {
   }
 });
 
-eventSchema.index({ slug: 1 }, { unique: true });
+// eventSchema.index({ slug: 1 }, { unique: true });
 eventSchema.index({ date: 1, mode: 1 });
 
 const Event =
