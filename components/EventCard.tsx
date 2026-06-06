@@ -6,7 +6,7 @@ interface CardProps {
   image: string;
   slug?: string;
   location?: string;
-  date?: string;
+  date?: Date | string;
   time?: string;
   category?: string;
 }
@@ -30,7 +30,7 @@ const EventCard = ({ title, image, slug, location, date, time, category }: CardP
           <div className="flex flex-col gap-1">
             <div className="flex items-center gap-1.5 text-[#837a9e] text-xs">
               <Calendar size={13} className="text-violet-700" />
-              <span>{date}</span>
+              <span>{date instanceof Date ? date.toDateString() : date}</span>
             </div>
             <div className="flex items-center gap-1.5 text-[#837a9e] text-xs">
               <Clock size={13} className="text-violet-700" />

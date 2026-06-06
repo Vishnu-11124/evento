@@ -1,59 +1,63 @@
 import EventCard from "@/components/EventCard";
 import ExploreButtons from "@/components/ExploreButtons";
 import LightRays from "@/components/LightRays";
+import { IEvent } from "@/database/event.model";
 
-const events = [
-  {
-    image: "https://images.unsplash.com/photo-1561489396-888724a1543d?w=800&auto=format&fit=crop",
-    title: "Tech Innovators Summit 2024",
-    slug: "tech-innovators-summit-2024",
-    location: "New York, NY",
-    date: "2024-07-15",
-    time: "9:00 AM - 6:00 PM",
-  },
-  {
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop",
-    title: "Global Music Festival",
-    slug: "global-music-festival",
-    location: "Austin, TX",
-    date: "2024-08-03",
-    time: "4:00 PM - 11:00 PM",
-  },
-  {
-    image: "https://images.unsplash.com/photo-1515168833906-d2a3b82b302a?w=800&auto=format&fit=crop",
-    title: "UI/UX Design Workshop",
-    slug: "ui-ux-design-workshop",
-    location: "San Francisco, CA",
-    date: "2024-08-20",
-    time: "10:00 AM - 3:00 PM",
-  },
-  {
-    image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&auto=format&fit=crop",
-    title: "Startup Networking Night",
-    slug: "startup-networking-night",
-    location: "Chicago, IL",
-    date: "2024-09-05",
-    time: "6:00 PM - 9:00 PM",
-  },
-  {
-    image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&auto=format&fit=crop",
-    title: "Women in Tech Conference",
-    slug: "women-in-tech-conference",
-    location: "Seattle, WA",
-    date: "2024-09-18",
-    time: "9:00 AM - 5:00 PM",
-  },
-  {
-    image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&auto=format&fit=crop",
-    title: "Food & Culture Carnival",
-    slug: "food-culture-carnival",
-    location: "Miami, FL",
-    date: "2024-10-12",
-    time: "12:00 PM - 8:00 PM",
-  },
-];
+// const events = [
+//   {
+//     image: "https://images.unsplash.com/photo-1561489396-888724a1543d?w=800&auto=format&fit=crop",
+//     title: "Tech Innovators Summit 2024",
+//     slug: "tech-innovators-summit-2024",
+//     location: "New York, NY",
+//     date: "2024-07-15",
+//     time: "9:00 AM - 6:00 PM",
+//   },
+//   {
+//     image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop",
+//     title: "Global Music Festival",
+//     slug: "global-music-festival",
+//     location: "Austin, TX",
+//     date: "2024-08-03",
+//     time: "4:00 PM - 11:00 PM",
+//   },
+//   {
+//     image: "https://images.unsplash.com/photo-1515168833906-d2a3b82b302a?w=800&auto=format&fit=crop",
+//     title: "UI/UX Design Workshop",
+//     slug: "ui-ux-design-workshop",
+//     location: "San Francisco, CA",
+//     date: "2024-08-20",
+//     time: "10:00 AM - 3:00 PM",
+//   },
+//   {
+//     image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&auto=format&fit=crop",
+//     title: "Startup Networking Night",
+//     slug: "startup-networking-night",
+//     location: "Chicago, IL",
+//     date: "2024-09-05",
+//     time: "6:00 PM - 9:00 PM",
+//   },
+//   {
+//     image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&auto=format&fit=crop",
+//     title: "Women in Tech Conference",
+//     slug: "women-in-tech-conference",
+//     location: "Seattle, WA",
+//     date: "2024-09-18",
+//     time: "9:00 AM - 5:00 PM",
+//   },
+//   {
+//     image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&auto=format&fit=crop",
+//     title: "Food & Culture Carnival",
+//     slug: "food-culture-carnival",
+//     location: "Miami, FL",
+//     date: "2024-10-12",
+//     time: "12:00 PM - 8:00 PM",
+//   },
+// ];
 
-const HomePage = () => {
+const HomePage = async () => {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/events`)
+  const { events } = await response.json();
+
   return (
     <main className="relative min-h-screen overflow-hidden bg-black text-white">
       
@@ -103,7 +107,7 @@ const HomePage = () => {
   </p>
   <h2 className="text-3xl font-medium text-white mb-8">Featured Events</h2>
   <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-    {events.map((event) => (
+    {events.map((event: IEvent) => (
       <li key={event.title}>
         <EventCard {...event} />
       </li>

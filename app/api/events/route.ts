@@ -84,3 +84,31 @@ export async function POST(req: NextRequest) {
   );
 }
 }
+
+export async function GET() {
+  try {
+    await connectToDatabase();
+
+    const events = await Event.find();
+
+    if(!events || events.length === 0) {  
+      return NextResponse.json(
+        { message: "No events found" },
+        { status: 404 }
+      );
+    }
+    return NextResponse.json(
+      {
+        message: "Events fetched successfully",
+        events,
+      },
+      { status: 200 }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      { message: "Failed to fetch events", error },
+      { status: 500 }
+    );
+  }
+}
+

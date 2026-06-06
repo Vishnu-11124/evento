@@ -1,6 +1,6 @@
 import mongoose, { HydratedDocument, Schema } from "mongoose";
 
-interface IEvent {
+export interface IEvent {
   title: string;
   slug: string;
   description: string;
