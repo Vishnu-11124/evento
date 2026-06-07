@@ -1,8 +1,8 @@
 import Event from "@/database/event.model";
 import connectToDatabase from "@/utils/dbConnect";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(request: Request, { params }: { params: Promise<{ slug: string }> }) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ slug: string }> }) {
     try {
         await connectToDatabase();
         const paramsResolved = await params; // unwrap the Promise
