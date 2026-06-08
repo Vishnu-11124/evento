@@ -1,3 +1,4 @@
+import BookEvent from "@/components/BookEvent";
 import {
   CalendarIcon,
   ClockIcon,
@@ -122,9 +123,7 @@ const PostDetails = async ({
           <div className="sticky top-10 bg-zinc-900/40 border border-zinc-800 rounded-2xl p-6 space-y-4">
             <h3 className="text-xl font-bold">Book Event</h3>
 
-            <button className="w-full py-3 rounded-xl bg-purple-600 hover:bg-purple-700 transition font-semibold">
-              Register Now
-            </button>
+            <BookEvent />
 
             <p className="text-sm text-zinc-400">
               Limited seats available. Reserve your spot before it fills up.
