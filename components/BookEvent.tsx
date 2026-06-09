@@ -8,7 +8,10 @@ const BookEvent = ({ booking = 10 }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (!email) return
-    setSubmitted(true)
+    
+    setTimeout(() => {
+      setSubmitted(true)
+    },1000)
   }
 
   return (
@@ -46,7 +49,7 @@ const BookEvent = ({ booking = 10 }) => {
 
           <button
             type="submit"
-            className="w-full py-2 rounded-lg bg-purple-600 hover:bg-purple-700 transition font-medium"
+            className="w-full cursor-pointer py-2 rounded-lg bg-purple-600 hover:bg-purple-700 transition font-medium"
           >
             Submit Booking
           </button>

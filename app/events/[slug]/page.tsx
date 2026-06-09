@@ -1,4 +1,5 @@
 import BookEvent from "@/components/BookEvent";
+import EventCard from "@/components/EventCard";
 import {
   CalendarIcon,
   ClockIcon,
@@ -34,6 +35,13 @@ const PostDetails = async ({
     { logo: PersonStanding, label: event.audience },
   ];
 
+  const relatedEventsDetails = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/events/${slug}/related`,
+  );
+
+  const { relatedEvents } = await relatedEventsDetails.json();
+
+  console.log("relatedevents: ", relatedEventsDetails);
   return (
     <div className="min-h-screen pb-8 bg-linear-to-b from-black via-zinc-950 to-black text-white">
       {/* HEADER */}
@@ -150,6 +158,17 @@ const PostDetails = async ({
             </section>
           </div>
         </aside>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6 mt-16">
+        <h2 className="text-2xl font-bold mb-6">Related Events</h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {relatedEvents &&
+            relatedEvents.map((event: any) => (
+            <EventCard key={event._id} {...event} />
+          ))}
+        </div>
       </div>
     </div>
   );
