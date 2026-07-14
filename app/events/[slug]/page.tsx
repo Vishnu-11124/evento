@@ -41,7 +41,7 @@ const PostDetails = async ({
 
   const { relatedEvents } = await relatedEventsDetails.json();
 
-  console.log("relatedevents: ", relatedEventsDetails);
+  // console.log("relatedevents: ", relatedEventsDetails);
   return (
     <div className="min-h-screen pb-8 bg-linear-to-b from-black via-zinc-950 to-black text-white">
       {/* HEADER */}
