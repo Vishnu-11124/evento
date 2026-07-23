@@ -131,7 +131,7 @@ const PostDetails = async ({
           <div className="sticky top-10 bg-zinc-900/40 border border-zinc-800 rounded-2xl p-6 space-y-4">
             <h3 className="text-xl font-bold">Book Event</h3>
 
-            <BookEvent />
+            <BookEvent eventId={event._id} slug={event.slug} />
 
             <p className="text-sm text-zinc-400">
               Limited seats available. Reserve your spot before it fills up.
