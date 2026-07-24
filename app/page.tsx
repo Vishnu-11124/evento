@@ -2,6 +2,7 @@ import EventCard from "@/components/EventCard";
 import ExploreButtons from "@/components/ExploreButtons";
 import LightRays from "@/components/LightRays";
 import { IEvent } from "@/database/event.model";
+import { allEventsCall } from "@/lib/actions/events";
 
 // const events = [
 //   {
@@ -55,8 +56,13 @@ import { IEvent } from "@/database/event.model";
 // ];
 
 const HomePage = async () => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/events`)
-  const { events } = await response.json();
+  const result = await allEventsCall()
+  
+    if (!result.success) {
+      return <div>Failed to load events.</div>;
+    }
+  
+    const events = result.data
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-black text-white">

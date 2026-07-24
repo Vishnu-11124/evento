@@ -1,12 +1,15 @@
 import EventCard from "@/components/EventCard";
 import { IEvent } from "@/database/event.model";
+import { allEventsCall } from "@/lib/actions/events";
 
 const Events = async () => {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/events`
-  );
+  const result = await allEventsCall()
 
-  const { events } = await response.json();
+  if (!result.success) {
+    return <div>Failed to load events.</div>;
+  }
+
+  const events = result.data
 
   return (
     <section className="min-h-screen bg-black px-4 py-10 sm:px-6 lg:px-8">
